@@ -1,0 +1,31 @@
+body {
+    font-family: Open Sans;
+   
+    text-align: left;
+}
+
+nav {
+    background-color: #245C46;
+    padding: 13px;
+    border: 1px solid #033623;
+    display: flex;
+    align-items: center;
+    gap: 700px;
+}
+
+form {
+    background-color: #EEEEEE;
+}
+
+.tit_autor {
+    display: flex;
+
+    align-items: center;
+   
+}
+
+.prec_quant_cadast {
+    display: flex;
+    align-items: center;
+}
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estante Viva</title>
+</head>
+<body>
+    <div class="cabecalho">
+        <nav>Estante Viva
+        <p class="links"><a href="">Catálogo | Cadastro</a></p>
+        </nav>
+    </div>
+
+        <main class="meio">
+        <h1>Gerenciamento de livros</h1>
+
+        
+            <form>
+                <h3>Cadastrar livro</h3>
+                <div class="tit_autor">
+                    <label for="titulo">Título *</label>
+                    <input type="text" required placeholder="Informe o titulo" id="titulo" name="titulo">
+
+                    <label for="autor">Autor *</label>
+                    <p><input type="text" required placeholder="Informe o autor" id="autor" name="autor"></p>
+                </div>
+
+                <div class="prec_quant_cadast">
+                    <label for="preco">Preço (R$) *</label>
+                    <input type="text" required placeholder="0.00" id="preco" name="preco">
+                
+                    <label for="quant_estoque">Quantidade em estoque *</label>
+                    <input type="text" required placeholder="0" id="quant_estoque" name="quant_estoque">
+                
+                    <button type="submit">Cadastrar livro</button>
+                </div>
+            </form>
+
+            <div class="catalogo">
+                <section>
+                    <h4>Catálogo de livros</h4>
+                    <input type="text">
+                    <button>Buscar</button>
+                    <button>Limpar</button>
+                </section>
+            </div>
+
+            <div class="tabela">
+                <table>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>preço</th>
+                        <th>estoque</th>
+                        <th>Ações</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Título cadastrado</td>
+                        <td>Nome do autor</td>
+                        <td>R$ 0.00</td>
+                        <td>0</td>
+                        <td><button>Editar</button> <button>Excluir</button></td>
+                    </tr>
+
+                      <tr>
+                        <td>Título cadastrado</td>
+                        <td>Nome do autor</td>
+                        <td>R$ 0.00</td>
+                        <td>0</td>
+                        <td><button>Editar</button> <button>Excluir</button></td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+
+        <footer>
+            Estante Viva - Gerenciamento de catálogo
+        </footer>
+
+</body>
+</html>
