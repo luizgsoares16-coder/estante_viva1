@@ -10,7 +10,7 @@ nav {
     border: 1px solid #033623;
     display: flex;
     align-items: center;
-    gap: 700px;
+    gap: 1186px;
 }
 
 form {
@@ -27,5 +27,44 @@ form {
 .prec_quant_cadast {
     display: flex;
     align-items: center;
+    gap: 15px;
+    
+}
+
+table {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #245C46;
+    padding: 16px 100px;
+    text-align: center;
+}
+
+tr {
+    border: 1px solid;
+}
+
+td {
+    padding: 18px 110px;
+    text-align: center;
+}
+
+footer {
+    background-color: #245C46;
+    padding: 14px;
+    text-align: center;
+}
+
+input {
+    text-align: start;
+    padding: 5px 10px;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 0px;
+    border: 1px solid;
 }
 
