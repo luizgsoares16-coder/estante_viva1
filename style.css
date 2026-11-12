@@ -6,34 +6,107 @@ body {
 
 nav {
     background-color: #245C46;
-    padding: 13px;
+    padding: 2px;
     border: 1px solid #033623;
     display: flex;
     align-items: center;
     gap: 1186px;
+    border: 1px solid;
+}
+
+.links {
+    text-decoration: none;
 }
 
 form {
     background-color: #EEEEEE;
+    border: 1px solid;
+}
+
+.inputs_form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.misera {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+}
+
+.butao_cadastrar {
+    padding: 8px 95px;
+    background-color: #245C46;
+    border: 1px solid;
 }
 
 .tit_autor {
     display: flex;
-
-    align-items: center;
-   
+    flex-direction: column;
+    margin-right: 22px;
+    justify-content: center;
+    margin-left: 15px;
 }
 
 .prec_quant_cadast {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    margin-right: 22px;
+    justify-content: center;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 55px;
+}
+
+.texto {
+    padding: 8px 345px;
+}
+
+.autor {
+    padding: 8px 200px;
+}
+
+.preco {
+    padding: 8px 200px ;
+}
+
+.quant {
+    padding: 8px 195px;
+}
+
+
+
+.buscar_livro {
+    padding: 8px 339px;
+}
+
+.catalogo {
+    display: flex;
     gap: 15px;
-    
+}
+
+.lim_buscar {
+    display: flex;
+    gap: 15px;
+}
+
+.buscar {
+    padding: 0 137px;
+    background-color: #245C46;
+    border: 1px solid;
+}
+
+.limpar {
+    padding: 0 136px;
+    background-color: #245C46;
+    border: 1px solid;
 }
 
 table {
     border: 1px solid;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 th {
@@ -49,6 +122,21 @@ tr {
 td {
     padding: 18px 110px;
     text-align: center;
+    
+}
+
+.editar {
+    padding: 8px 18px;
+}
+
+.excluir {
+    padding: 8px 15px;
+}
+
+.edit_exc {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 footer {
@@ -63,8 +151,9 @@ input {
 }
 
 button {
-    padding: 5px 10px;
-    border-radius: 0px;
-    border: 1px solid;
+    /* padding: 0px 10px; */
+    /* border-radius: 0px; */
+    /* border: 1px solid; */
 }
+
 
