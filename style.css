@@ -28,7 +28,7 @@ form {
     flex-wrap: wrap;
 }
 
-.misera {
+.botao_form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,6 +39,7 @@ form {
     padding: 8px 95px;
     background-color: #245C46;
     border: 1px solid;
+    cursor: pointer;
 }
 
 .tit_autor {
@@ -95,12 +96,14 @@ form {
     padding: 0 137px;
     background-color: #245C46;
     border: 1px solid;
+    cursor: pointer;
 }
 
 .limpar {
     padding: 0 136px;
     background-color: #245C46;
     border: 1px solid;
+    cursor: pointer;
 }
 
 table {
@@ -127,16 +130,23 @@ td {
 
 .editar {
     padding: 8px 18px;
+    background-color: #245C46;
+    border: 1px solid;
+    cursor: pointer;
 }
 
 .excluir {
     padding: 8px 15px;
+    background-color: #245C46;
+    border: 1px solid;
+    cursor: pointer;
 }
 
 .edit_exc {
     display: flex;
     align-items: center;
     gap: 8px;
+    
 }
 
 footer {
