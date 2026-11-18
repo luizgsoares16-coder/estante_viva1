@@ -53,5 +53,5 @@ function addTaskToTable (livro) {
     table.appendChild(tr);
     }
 
-    
+
 }
