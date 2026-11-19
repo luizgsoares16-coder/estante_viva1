@@ -82,23 +82,29 @@ app.get('/api/livros/:id', (req, res)=> {                                       
 
 
 
-app.post('/api/livros',(req, res)=> {
-    const { titulo, autor, preco, quantidade_estoque } = req.body;
+app.post('/api/livros',(req, res)=> {                                                                                                                                   //Criação da rota POST: app.post = vai criar uma rota que vai receber as informações pra cadastrar novos registros.
 
-    if(!titulo ||!titulo.trim()||!autor ||!autor.trim()|| preco <= 0 ||!Number.isFinite(Number(preco))||!Number.isInteger(quantidade_estoque)||quantidade_estoque < 0){
-        
-        return res.status(400).json({mensagem:'Man preenche ai certinho pow'});
+    const { titulo, autor, preco, quantidade_estoque } = req.body;                                                                                                      //Recebendo os dados: Está sendo usado uma forma de pegar todos os valores de uma vez.  req.body = Contém as informações enviadas pelo frontend.
+
+    if(!titulo ||!titulo.trim()||!autor ||!autor.trim()|| preco <= 0 ||!Number.isFinite(Number(preco))||!Number.isInteger(quantidade_estoque)||quantidade_estoque < 0){ //Validando os campos:  if = Verifica se os dados estão corretos.    !titulo = Verifica se o titulo está vazio ou não foi enviado.
+                                                                                                                                                                        //!titulo.trim() = Verifica se o título contém apenas espaços.       !autor = Verifica se o autor está vazio.
+                                                                                                                                                                        // preco <= 0 = Verifica se o preço é menor ou igual a zero.         !Number.isFinite(Number(preco)) = Verifica se o preço pode ser convertido em um número válido.
+                                                                                                                                                                        //Number.isInteger() = Verifica se o estoque é um numero inteiro.    quantidade_estoque < 0 = Impede o estoque ser negativo.
+
+      
+        return res.status(400).json({mensagem:'Man preenche ai certinho pow'});                                                                                        //Retornando erro de validação: O codigo 400 significa que os dados enviados estão incorretos.
     }
 
-    const sql = 'INSERT INTO livros(titulo, autor, preco, quantidade_estoque) VALUES (?, ?, ?, ?)';
+    const sql = 'INSERT INTO livros(titulo, autor, preco, quantidade_estoque) VALUES (?, ?, ?, ?)';                                                                    //Criando o comando SQL:   INSERT INTO = Inserir dados.    livros = tabela que vai receber os dados.   VALUES = Indica os valores que serão inseridos.
+                                                                                                                                                                       // ? = representa cada valor enviado
 
-    db.query(sql,[titulo.trim(),autor.trim(),preco,quantidade_estoque],(err,resultado)=>{
+    db.query(sql,[titulo.trim(),autor.trim(),preco,quantidade_estoque],(err,resultado)=>{                                                                              //Executando o cadastro: Envia o comando SQL para o banco.
 
         if(err){
-            return res.status(500).json({ mensagem:'Não deu pra cadastrar o livro não irmão'});
+            return res.status(500).json({ mensagem:'Não deu pra cadastrar o livro não irmão'});                                                                        
         }
 
-        res.status(201).json({
+        res.status(201).json({                                                                                                                                         //Retornando o cadastro: O código 201 significa que um novo registro foi criado.    resultado.insertId = Vai retornar o ID que foi gerado automaticamente pelo MYSQL.
             id_livro: resultado.insertId,
             titulo,
             autor,
@@ -114,32 +120,32 @@ app.post('/api/livros',(req, res)=> {
 
 
 
-app.put('/api/livros/:id', (req, res) => {
+app.put('/api/livros/:id', (req, res) => {                                                                                 //Criação da rota:   app.put = cria uma rota responsável por atualizar registros.    :id = mostra qual livro vai ser atualizado.
 
-    const id = req.params.id;
+    const id = req.params.id;                                                                                              //Pegando ID e os dados: O ID pela URL.                                              
 
-    const { titulo, autor, preco, quantidade_estoque } = req.body;
+    const { titulo, autor, preco, quantidade_estoque } = req.body;                                                         //Os novos dados pelo corpo da requisição.
 
-    if (!titulo || !titulo.trim() || !autor || !autor.trim() ||
+    if (!titulo || !titulo.trim() || !autor || !autor.trim() ||                                                            //Validando os dados: Utilizamos a mesma validação do cadastro, porque a gente não pode permitir que alguém atualize um livro com informações inválidas.
         preco <= 0 || !Number.isFinite(Number(preco)) ||
         !Number.isInteger(quantidade_estoque) || quantidade_estoque < 0) {
 
-        return res.status(400).json({ mensagem: 'Preencha os campos corretamente' });
+        return res.status(400).json({ mensagem: 'Preencha os campos corretamente' });                                      
     }
 
-    const sql = 'UPDATE livros SET titulo = ?, autor = ?, preco = ?, quantidade_estoque = ? WHERE id_livro = ?';
+    const sql = 'UPDATE livros SET titulo = ?, autor = ?, preco = ?, quantidade_estoque = ? WHERE id_livro = ?';            //Criando o comando SQL:   UPDATE = atualiza registros.   SET = indica quais colunas serão modificadas.   WHERE = indica qual registro vai ser atualizado.
 
-    db.query(sql, [titulo.trim(), autor.trim(), preco, quantidade_estoque, id], (err, resultado) => {
+    db.query(sql, [titulo.trim(), autor.trim(), preco, quantidade_estoque, id], (err, resultado) => {                       //Executando a atualização:  Envia os novos valores pro banco.
 
-        if (err) {
+        if (err) {                                                                                                          
             return res.status(500).json({ mensagem: 'Erro ao editar livro' });
         }
 
-        if (resultado.affectedRows === 0) {
+        if (resultado.affectedRows === 0) {                                                                                 //Verificando se encontrou o livro: affectedRows = Informa quantas linhas foram alteradas.  Caso retorne zero, o código entende que nenhum registro foi atualizado.
             return res.status(404).json({ mensagem: 'Livro não encontrado' });
         }
 
-        res.json({ mensagem: 'Livro atualizado com sucesso!' });
+        res.json({ mensagem: 'Livro atualizado com sucesso!' });                                                            //Retornando Sucesso: Vai enviar uma mensagem confirmando a atualização.
     });
 });
 
@@ -149,23 +155,23 @@ app.put('/api/livros/:id', (req, res) => {
 
 
 
-app.delete('/api/livros/:id', (req, res) => {
+app.delete('/api/livros/:id', (req, res) => {                                              //Criando a rota: app.delete = cria uma rota responsável por excluir registros.
 
-    const id = req.params.id;
+    const id = req.params.id;                                                              //Recebendo o ID: Recebe o identificador do livro que será excluído.
 
-    const sql = 'DELETE FROM livros WHERE id_livro = ?';
+    const sql = 'DELETE FROM livros WHERE id_livro = ?';                                   //Criando o SQL:  DELETE FROM: excluir registros.   livros: tabela onde está o registro.   WHERE: determina qual livro será excluído.
 
-    db.query(sql, [id], (err, resultado) => {
+    db.query(sql, [id], (err, resultado) => {                                              //Executando a exclusão: Envia o comando ao banco utilizando o ID recebido.
 
         if (err) {
             return res.status(500).json({ mensagem: 'Erro ao excluir livro' });
         }
 
-        if (resultado.affectedRows === 0) {
+        if (resultado.affectedRows === 0) {                                                //Verificando se encontrou o livro: Se nenhum registro foi excluído, significa que o ID não foi encontrado.
             return res.status(404).json({ mensagem: 'Livro não encontrado' });
         }
 
-        res.json({ mensagem: 'Livro excluído com sucesso!' });
+        res.json({ mensagem: 'Livro excluído com sucesso!' });                             //Retornando sucesso: Informa que a exclusão funcionou.
     });
 });
 
@@ -175,6 +181,6 @@ app.delete('/api/livros/:id', (req, res) => {
 
 
 
-app.listen(3000, () => {
+app.listen(3000, () => {                                      //app.listen(3000) = inicia o servidor na porta 3000.      console.log = Mostra uma mensagem no terminal para informar que o servidor iniciou.
     console.log('Servidor rodando na porta 3000');
 });
