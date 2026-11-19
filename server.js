@@ -171,3 +171,10 @@ app.delete('/api/livros/:id', (req, res) => {
 
 
 
+// =================== Iniciando o servidor =======================
+
+
+
+app.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000');
+});
