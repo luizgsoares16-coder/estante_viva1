@@ -1,7 +1,7 @@
 CREATE DATABASE estante_viva;
 USE estante_viva;
 
-CREATE TABLE livro(
+CREATE TABLE livros(
 id_livro INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 titulo VARCHAR(150) NOT NULL,
 autor VARCHAR(120) NOT NULL,
